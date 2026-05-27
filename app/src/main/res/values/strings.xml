@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Art Space App</string>
+    <string name="street">A Street, Tunis</string>
+    <string name="calvin">John Calvin</string>
+    <string name="isabella">Isabella Clara Eugenie of Austria, Spain and Countess of Flanders</string>
+    <string name="ferdinand">Ferdinand II, Roman Emperor</string>
+    <string name="elizabeth">Elizabeth</string>
+    <string name="bulto">Bulto of Santiago</string>
+    <string name="buzz">Buzz Aldrin Poses with Flag</string>
+    <string name="basement">Basement of Urban House, 1910</string>
+    <string name="cigar">Cigar Store Indian</string>
+    <string name="dress">Dress</string>
+
+    <string name="street_description">Emily Sargent - 2021</string>
+    <string name="calvin_description">I. Covens - 1950</string>
+    <string name="isabella_description">Paul de la Honne - 1950</string>
+    <string name="ferdinand_description">Francis Hocius - 1950</string>
+    <string name="elizabeth_description">Anonymous Artist - 1950</string>
+    <string name="bulto_description">Agnes C. Sims - 1943</string>
+    <string name="buzz_description">Neil Armstrong, National Aeronautics and Space Administration - July 20, 1969</string>
+    <string name="basement_description">Perkins Harnly c. 1947</string>
+    <string name="cigar_description">Albert Ryder c. 1946</string>
+    <string name="dress_description">Marie Alain c. 1942</string>
+</resources>
