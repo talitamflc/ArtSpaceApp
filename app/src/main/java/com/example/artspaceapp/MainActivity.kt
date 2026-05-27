@@ -18,6 +18,11 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -54,9 +59,9 @@ fun ArtSpaceApp(modifier: Modifier = Modifier) {
 
 @Composable
 fun ArtSpaceScreenStatic(){
-    //logic here
-    var artImage = R.drawable.dress_1943_8_2691
-    var artImageArray = arrayOf(
+
+    var artImageIndex by remember { mutableIntStateOf(0) }
+    val artImageArray = remember {  mutableListOf<Int>(
         R.drawable.dress_1943_8_2691,
         R.drawable.isabella_clara_eugenie_of_austria_spain_and_countess_of_flanders_1950_14_697,
         R.drawable.elizabeth_1950_14_395,
@@ -66,10 +71,9 @@ fun ArtSpaceScreenStatic(){
         R.drawable.buzz_aldrin_poses_with_flag_2018_177_26,
         R.drawable.cigar_store_indian_1943_8_10000,
         R.drawable.ferdinand_ii_roman_emperor_1950_14_463,
-        R.drawable.john_calvin_1950_14_252)
+        R.drawable.john_calvin_1950_14_252) }
 
-    var artTitle = R.string.dress
-    var artTitleArray = arrayOf(
+    val artTitleArray = arrayOf(
         R.string.dress,
         R.string.isabella,
         R.string.elizabeth,
@@ -81,9 +85,7 @@ fun ArtSpaceScreenStatic(){
         R.string.ferdinand,
         R.string.calvin)
 
-
-    var artDescription = R.string.dress_description
-    var artDescriptionArray = arrayOf(
+    val artDescriptionArray = arrayOf(
         R.string.dress_description,
         R.string.isabella_description,
         R.string.elizabeth_description,
@@ -95,14 +97,16 @@ fun ArtSpaceScreenStatic(){
         R.string.ferdinand_description,
         R.string.calvin_description)
 
-
+ val teste : List<List<Int>> = listOf(listOf(R.drawable.dress_1943_8_2691, R.string.dress, R.string.dress_description),
+     listOf())
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 8.dp)
         ) {
         Image(
-            painter = painterResource(artImage),
+            painter = painterResource(artImageArray[artImageIndex]),
             contentDescription = null,
             modifier = Modifier.border(
                 width = 32.dp,
@@ -110,31 +114,56 @@ fun ArtSpaceScreenStatic(){
             )
         )
         Spacer(modifier = Modifier.height(72.dp))
-        Column(
-            modifier = Modifier
+        Column(modifier = Modifier
                 .background(color = Color.LightGray)
                 .padding(start = 32.dp, end = 32.dp)
         ){
             Text(
-                stringResource(artTitle),
+                stringResource(artTitleArray[artImageIndex]),
                 fontSize = 24.sp,
                 fontStyle = FontStyle.Normal,
                 modifier = Modifier.padding(top = 16.dp)
             )
             Text(
-                stringResource(artDescription),
+                stringResource(artDescriptionArray[artImageIndex]),
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(bottom = 16.dp)
             )
         }
         Spacer(modifier = Modifier.height(16.dp))
-        Row (horizontalArrangement = Arrangement.Center) {
-            Button(onClick = {/*ainda vou construir*/},
-                modifier = Modifier.padding(end = 32.dp)){
-                Text(text = "    Previous    ")
+        Row (horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+
+            //diminui --  fazer nao quebrar
+
+            Button(onClick = {
+               // artImageArray.forEach { artImageIndex in 9 downTo 0 }
+
+                if (artImageIndex in 9 downTo 0) {
+                    artImageIndex--
+                }
+                else {
+                    // um texto para finalizar??
+                }
+            },
+                modifier = Modifier.weight(1f)
+                    .padding(16.dp)){
+                Text(text = stringResource(R.string.previous)) //usar um padding
             }
-            Button(onClick = {/*ainda vou construir*/}){
-                Text(text = "        Next        ")
+
+            //aumenta ++  corrigir para nao quebrar quando passar do 9
+
+            Button(onClick = {
+                if (artImageIndex >= 0 && artImageIndex <= artImageArray.size-2) {
+                    artImageIndex++ }
+                else {
+                    artImageIndex = 0
+                }
+            },
+                modifier = Modifier.weight(1f)
+                    .padding(16.dp)
+
+            ){
+                Text(text = stringResource(R.string.next))
             }
         }
     }
@@ -146,6 +175,5 @@ fun ArtSpaceScreenStatic(){
 fun ArtSpaceScreePreview() {
     ArtSpaceAppTheme {
         ArtSpaceScreenStatic()
-
     }
 }

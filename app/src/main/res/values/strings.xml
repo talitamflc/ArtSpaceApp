@@ -21,4 +21,6 @@
     <string name="basement_description">Perkins Harnly c. 1947</string>
     <string name="cigar_description">Albert Ryder c. 1946</string>
     <string name="dress_description">Marie Alain c. 1942</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
 </resources>
