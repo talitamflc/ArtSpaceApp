@@ -97,8 +97,8 @@ fun ArtSpaceScreenStatic(){
         R.string.ferdinand_description,
         R.string.calvin_description)
 
- val teste : List<List<Int>> = listOf(listOf(R.drawable.dress_1943_8_2691, R.string.dress, R.string.dress_description),
-     listOf())
+ //val teste : List<List<Int>> = listOf(listOf(R.drawable.dress_1943_8_2691, R.string.dress, R.string.dress_description),
+  //   listOf())
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -133,30 +133,29 @@ fun ArtSpaceScreenStatic(){
         Spacer(modifier = Modifier.height(16.dp))
         Row (horizontalArrangement = Arrangement.spacedBy(16.dp)) {
 
-            //diminui --  fazer nao quebrar
-
             Button(onClick = {
-               // artImageArray.forEach { artImageIndex in 9 downTo 0 }
 
-                if (artImageIndex in 9 downTo 0) {
+                if (artImageIndex in 9 downTo 0 && artImageIndex > 0) {
                     artImageIndex--
                 }
                 else {
-                    // um texto para finalizar??
+                    artImageIndex = 9 // se quiser que trave, tira esse
+
+                    //ideia plus master - popup indicando para avancar
                 }
             },
                 modifier = Modifier.weight(1f)
                     .padding(16.dp)){
-                Text(text = stringResource(R.string.previous)) //usar um padding
+                Text(text = stringResource(R.string.previous))
             }
-
-            //aumenta ++  corrigir para nao quebrar quando passar do 9
 
             Button(onClick = {
                 if (artImageIndex >= 0 && artImageIndex <= artImageArray.size-2) {
                     artImageIndex++ }
                 else {
-                    artImageIndex = 0
+                    artImageIndex = 0 //se quiser que trave, tira esse
+
+                // ideia plus master - popup indicando para retornar
                 }
             },
                 modifier = Modifier.weight(1f)
